@@ -1,0 +1,16 @@
+<div>
+    <h3>{{post.message_html|safe}}</h3>
+    <strong>{{post.user.username}}</strong>
+    <h5>
+    <span><a href=" {url 'posts:form_user' username=post.user.username%}"></a></span>
+    <time>
+        <a href="{% url 'posts:single' username=post.user.username pk=post.pk%}"></a>
+    </time>
+    </h5>
+    <div>
+        {% if user.is_authenicated and post.user == user%}
+        <a href="{% url 'posts:delete' pk=posts.pk %}" title="delete"><span>Remove</span></a>
+
+        {%endif%}
+    </div>
+</div>
