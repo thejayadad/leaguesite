@@ -5,7 +5,23 @@
 <h3>Total Members: {{group.members.count }}</h3>
 
 {% if user in group.members.all%}
+<a href="{%url 'groups:leave' slug=group.slug%}">Leave</a>
 
-
+{%else%}
+<a href="{%url 'groups:join' slug=group.slug%}">Join</a>
 {%endif%}
+{% endblock%}
+
+
+
+{% block group_content%}
+{% if group.posts.count == 0%}
+<h2>Be first to post in this group</h2>
+
+{% else%}
+
+{% for post in group.posts.all%}
+{%include "posts/_post.html"%}
+
+{endfor}
 {% endblock%}
