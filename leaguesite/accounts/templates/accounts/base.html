@@ -12,13 +12,14 @@
             <a href="{% url 'home' %}">Home</a>
             <ul>
                 {% if user.is_authenicated%}
-                <li><a href="#">Post</a></li>
-                <li><a href="#">Groups</a></li>
-                <li><a href="#">Create Groups</a></li>
+                <li><a href="{% url 'posts:create' %}">Post</a></li>
+                <li><a href="{% url 'groups:all' %}">Groups</a></li>
+                <li><a href="{% url 'groups:create' %}">Create Groups</a></li>
                 <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
 
                 {% else%}
                 <li><a href="#">Groups</a></li>
+                <li><a href="{% url 'groups:all' %}"class="btn btn-simple">Groups</a></li>
                 <li><a href="{% url 'accounts:login'%}">Login</a></li>
                 <li><a href="{% url 'accounts:signup'%}">Signup</a></li>
                 {% endif %}
