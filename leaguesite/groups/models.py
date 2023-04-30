@@ -4,7 +4,7 @@ from django.urls import reverse
 # Create your models here.
 from django.utils.text import slugify
 
-import misaka 
+import misaka as m
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -25,7 +25,7 @@ class Group(models.Model):
     
     def save(self,*args, **kwargs):
         self.slug = slugify(self.name)
-        self.description_html = misaka.html(self.description)
+        self.description_html = m.html(self.description)
         super().save(*args,**kwargs)
 
 
